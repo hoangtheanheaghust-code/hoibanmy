@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Góc Nhỏ Của Khối Phương 💌</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #fff1f5 0%, #ffe4ec 50%, #fdf2f8 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1.5px solid #fbcfe8;
+      box-shadow: 0 20px 40px -15px rgba(244, 114, 182, 0.25);
+    }
+    .fade-in {
+      animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .float-slow {
+      animation: floatSlow 3.5s ease-in-out infinite;
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+    .tag-btn {
+      transition: all 0.2s ease;
+    }
+    .tag-btn.active {
+      background: linear-gradient(135deg, #f472b6, #ec4899);
+      color: white;
+      border-color: #ec4899;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center p-4 text-slate-700 relative">
+
+  <!-- Họa tiết trang trí nền nhẹ nhàng -->
+  <div class="fixed top-8 left-6 text-pink-300/60 text-3xl select-none pointer-events-none float-slow">🌸</div>
+  <div class="fixed bottom-10 right-8 text-pink-300/60 text-3xl select-none pointer-events-none float-slow" style="animation-delay: 1s;">🌷</div>
+  <div class="fixed top-1/4 right-6 text-rose-300/50 text-2xl select-none pointer-events-none float-slow" style="animation-delay: 1.8s;">✨</div>
+
+  <main class="w-full max-w-md z-10">
+
+    <!-- MÀN HÌNH 0: THIỆP MỞ ĐẦU -->
+    <section id="step-0" class="glass-card rounded-3xl p-7 text-center space-y-5 fade-in">
+      <div class="w-20 h-20 mx-auto rounded-full bg-pink-100 border-2 border-pink-200 flex items-center justify-center text-4xl shadow-inner float-slow">
+        💌
+      </div>
+      <div class="space-y-2">
+        <span class="inline-block px-3 py-1 rounded-full bg-pink-100 text-pink-600 text-xs font-bold tracking-wide">
+          GỬI RIÊNG KHỐI PHƯƠNG
+        </span>
+        <h1 class="text-2xl font-bold text-slate-800">
+          Một chiếc khảo sát nhỏ xinh ✨
+        </h1>
+        <p class="text-sm text-slate-500 leading-relaxed">
+          Chỉ mất khoảng 1 phút để khám phá xem vũ trụ của <strong class="text-pink-600">Khối Phương</strong> có những điều thú vị gì nhé!
+        </p>
+      </div>
+      <button type="button" onclick="goToStep(1)" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white font-bold text-sm shadow-lg shadow-pink-300/50 transition active:scale-[0.98]">
+        Mở thiệp & Bắt đầu 💖
+      </button>
+    </section>
+
+    <!-- KHUNG CÂU HỎI (BƯỚC 1 -> 4) -->
+    <section id="quizContainer" class="hidden glass-card rounded-3xl p-6 sm:p-7 space-y-5">
+      <!-- Thanh tiến trình -->
+      <div class="space-y-1.5">
+        <div class="flex justify-between items-center text-xs font-bold text-pink-500">
+          <span id="stepLabel">Câu 1 / 4</span>
+          <span id="stepPercent">25%</span>
+        </div>
+        <div class="w-full h-2 bg-pink-100 rounded-full overflow-hidden">
+          <div id="progressBar" class="h-full bg-gradient-to-r from-pink-400 to-rose-500 rounded-full transition-all duration-300" style="width: 25%"></div>
+        </div>
+      </div>
+
+      <!-- BƯỚC 1: TÊN ĐẦY ĐỦ & NGÀY SINH -->
+      <div id="step-1" class="step-pane space-y-4 fade-in">
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">1. Làm quen một chút nhé 🌸</h2>
+          <p class="text-xs text-slate-500">Cho tớ biết tên đầy đủ và ngày đặc biệt của cậu nha.</p>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Họ và tên đầy đủ *</label>
+            <input id="inputFullName" type="text" placeholder="VD: Nguyễn Khối Phương..." class="w-full rounded-xl border border-pink-200 bg-white/90 px-3.5 py-2.5 text-sm focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-200" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Biệt danh mọi người hay gọi</label>
+            <input id="inputNickname" type="text" placeholder="VD: Phương, Bông, Mèo..." class="w-full rounded-xl border border-pink-200 bg-white/90 px-3.5 py-2.5 text-sm focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-200" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Ngày sinh nhật của cậu *</label>
+            <input id="inputDob" type="date" onchange="updateZodiacPreview()" class="w-full rounded-xl border border-pink-200 bg-white/90 px-3.5 py-2.5 text-sm focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-200" />
+            <div id="zodiacBadge" class="hidden mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-50 border border-pink-200 text-xs font-bold text-pink-600"></div>
+          </div>
+        </div>
+
+        <div class="pt-2 flex justify-end">
+          <button type="button" onclick="validateAndNext(1)" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 to-rose-500 text-white font-bold text-sm shadow-md shadow-pink-200 hover:opacity-95 transition">
+            Tiếp theo →
+          </button>
+        </div>
+      </div>
+
+      <!-- BƯỚC 2: SỞ THÍCH & ĐỒ ĂN THỨC UỐNG -->
+      <div id="step-2" class="step-pane hidden space-y-4 fade-in">
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">2. Sở thích & Gu ẩm thực 🍓</h2>
+          <p class="text-xs text-slate-500">Chọn những thứ khiến cậu vui vẻ mỗi ngày (chọn nhiều được nha).</p>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-2">Lúc rảnh cậu thích làm gì?</label>
+            <div id="hobbyTags" class="flex flex-wrap gap-2 text-xs font-semibold">
+              <button type="button" onclick="toggleTag(this)" class="tag-btn px-3 py-1.5 rounded-full border border-pink-200 bg-white text-slate-600">🎧 Nghe nhạc</button>
+              <button type="button" onclick="toggleTag(this)" class="tag-btn px-3 py-1.5 rounded-full border border-pink-200 bg-white text-slate-600">🎬 Xem phim</button>
+              <button type="button" onclick="toggleTag(this)" class="tag-btn px-3 py-1.5 rounded-full border border-pink-200 bg-white text-slate-600">📚 Đọc truyện/sách</button>
+              <button type="button" onclick="toggleTag(this)" class="tag-btn px-3 py-1.5 rounded-full border border-pink-200 bg-white text-slate-600">📸 Chụp ảnh</button>
+              <button type="button" onclick="toggleTag(this)" class="tag-btn px-3 py-1.5 rounded-full border border-pink-200 bg-white text-slate-600">😴 Ngủ nướng</button>
+              <button type="button" onclick="toggleTag(this)" class="tag-btn px-3 py-1.5 rounded-full border border-pink-200 bg-white text-slate-600">🛵 Đi dạo hóng gió</button>
+              <button type="button" onclick="toggleTag(this)" class="tag-btn px-3 py-1.5 rounded-full border border-pink-200 bg-white text-slate-600">🎮 Chơi game</button>
+              <button type="button" onclick="toggleTag(this)" class="tag-btn px-3 py-1.5 rounded-full border border-pink-200 bg-white text-slate-600">🍰 Làm bánh / Nấu ăn</button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Món ăn / Đồ uống "chân ái" của cậu?</label>
+            <input id="inputFood" type="text" placeholder="VD: Trà sữa matcha, bánh tráng trộn, bún đậu..." class="w-full rounded-xl border border-pink-200 bg-white/90 px-3.5 py-2.5 text-sm focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-200" />
+          </div>
+        </div>
+
+        <div class="pt-2 flex justify-between">
+          <button type="button" onclick="goToStep(1)" class="px-4 py-2.5 rounded-xl border border-pink-200 text-pink-600 font-bold text-xs hover:bg-pink-50">
+            ← Quay lại
+          </button>
+          <button type="button" onclick="goToStep(3)" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 to-rose-500 text-white font-bold text-sm shadow-md shadow-pink-200">
+            Tiếp theo →
+          </button>
+        </div>
+      </div>
+
+      <!-- BƯỚC 3: TÍNH CÁCH & ÂM NHẠC -->
+      <div id="step-3" class="step-pane hidden space-y-4 fade-in">
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">3. Vibe của Khối Phương 🌷</h2>
+          <p class="text-xs text-slate-500">Vài nét phác họa về thế giới riêng của cậu.</p>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-2">Cậu thấy mình thuộc hệ nào?</label>
+            <div id="vibeTags" class="grid grid-cols-2 gap-2 text-xs font-semibold">
+              <button type="button" onclick="selectSingleTag(this, 'vibeTags')" class="tag-btn p-2.5 rounded-xl border border-pink-200 bg-white text-slate-600 text-left">🌷 Hướng nội nhẹ nhàng</button>
+              <button type="button" onclick="selectSingleTag(this, 'vibeTags')" class="tag-btn p-2.5 rounded-xl border border-pink-200 bg-white text-slate-600 text-left">☀️ Hướng ngoại vui vẻ</button>
+              <button type="button" onclick="selectSingleTag(this, 'vibeTags')" class="tag-btn p-2.5 rounded-xl border border-pink-200 bg-white text-slate-600 text-left">🌤️ Tùy lúc tùy người</button>
+              <button type="button" onclick="selectSingleTag(this, 'vibeTags')" class="tag-btn p-2.5 rounded-xl border border-pink-200 bg-white text-slate-600 text-left">🧸 Mơ mộng & ấm áp</button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Màu sắc yêu thích hoặc bài hát hay nghe gần đây?</label>
+            <input id="inputMusicColor" type="text" placeholder="VD: Màu hồng pastel, nhạc chill..." class="w-full rounded-xl border border-pink-200 bg-white/90 px-3.5 py-2.5 text-sm focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-200" />
+          </div>
+        </div>
+
+        <div class="pt-2 flex justify-between">
+          <button type="button" onclick="goToStep(2)" class="px-4 py-2.5 rounded-xl border border-pink-200 text-pink-600 font-bold text-xs hover:bg-pink-50">
+            ← Quay lại
+          </button>
+          <button type="button" onclick="goToStep(4)" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 to-rose-500 text-white font-bold text-sm shadow-md shadow-pink-200">
+            Câu cuối →
+          </button>
+        </div>
+      </div>
+
+      <!-- BƯỚC 4: LỜI NHẮN GỬI -->
+      <div id="step-4" class="step-pane hidden space-y-4 fade-in">
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">4. Điều cuối cùng nè 💌</h2>
+          <p class="text-xs text-slate-500">Một điều ước nhỏ hoặc lời nhắn gửi lại cho người làm trang web này.</p>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Một điều cậu đang mong muốn nhất lúc này?</label>
+            <input id="inputWish" type="text" placeholder="VD: Đậu nguyện vọng 1, đi du lịch, được bao trà sữa..." class="w-full rounded-xl border border-pink-200 bg-white/90 px-3.5 py-2.5 text-sm focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-200" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Lời nhắn gửi lại (không bắt buộc)</label>
+            <textarea id="inputNote" rows="3" placeholder="Viết gì đó dễ thương vào đây nha..." class="w-full rounded-xl border border-pink-200 bg-white/90 p-3 text-sm focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-200"></textarea>
+          </div>
+        </div>
+
+        <div class="pt-2 flex justify-between">
+          <button type="button" onclick="goToStep(3)" class="px-4 py-2.5 rounded-xl border border-pink-200 text-pink-600 font-bold text-xs hover:bg-pink-50">
+            ← Quay lại
+          </button>
+          <button type="button" onclick="finishSurvey()" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-sm shadow-lg shadow-pink-300/60">
+            Hoàn thành ✨
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÀN HÌNH KẾT QUẢ: THẺ PROFILE XINH XẮN -->
+    <section id="resultScreen" class="hidden glass-card rounded-3xl p-6 sm:p-7 space-y-5 fade-in">
+      <div class="text-center space-y-1">
+        <span class="inline-block px-3 py-1 rounded-full bg-pink-100 text-pink-600 text-[11px] font-bold">
+          ĐÃ LƯU HỒ SƠ ĐÁNG YÊU 💖
+        </span>
+        <h2 class="text-xl font-bold text-slate-800">Thẻ Thông Tin Của Khối Phương</h2>
+        <p class="text-xs text-slate-500">Cậu bấm sao chép bên dưới hoặc chụp màn hình gửi lại cho tớ nhé!</p>
+      </div>
+
+      <!-- Khung thẻ Profile -->
+      <div class="rounded-2xl bg-gradient-to-br from-pink-50 via-white to-rose-50 border border-pink-200 p-4 space-y-3 text-xs shadow-sm">
+        <div class="flex items-center justify-between border-b border-pink-100 pb-2.5">
+          <div>
+            <div id="resName" class="text-base font-bold text-pink-600"></div>
+            <div id="resNickname" class="text-[11px] text-slate-500"></div>
+          </div>
+          <div id="resZodiac" class="px-2.5 py-1 rounded-full bg-pink-100 text-pink-700 font-bold text-[11px]"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div class="bg-white/80 p-2.5 rounded-xl border border-pink-100">
+            <div class="text-[10px] font-bold text-slate-400 uppercase">Ngày sinh</div>
+            <div id="resDob" class="font-bold text-slate-700 mt-0.5"></div>
+          </div>
+          <div class="bg-white/80 p-2.5 rounded-xl border border-pink-100">
+            <div class="text-[10px] font-bold text-slate-400 uppercase">Tính cách</div>
+            <div id="resVibe" class="font-bold text-slate-700 mt-0.5"></div>
+          </div>
+        </div>
+
+        <div class="bg-white/80 p-2.5 rounded-xl border border-pink-100 space-y-1">
+          <div class="text-[10px] font-bold text-slate-400 uppercase">Sở thích</div>
+          <div id="resHobbies" class="font-semibold text-slate-700 leading-relaxed"></div>
+        </div>
+
+        <div class="bg-white/80 p-2.5 rounded-xl border border-pink-100 space-y-1">
+          <div class="text-[10px] font-bold text-slate-400 uppercase">Món chân ái & Gu màu/nhạc</div>
+          <div id="resFoodMusic" class="font-semibold text-slate-700"></div>
+        </div>
+
+        <div class="bg-pink-100/60 p-3 rounded-xl border border-pink-200 space-y-1">
+          <div class="text-[10px] font-bold text-pink-600 uppercase">Điều ước & Lời nhắn 💌</div>
+          <div id="resWishNote" class="font-semibold text-slate-700 italic"></div>
+        </div>
+      </div>
+
+      <!-- Nút copy gửi lại -->
+      <div class="space-y-2">
+        <button type="button" onclick="copyResultText()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:opacity-95 text-white font-bold text-sm shadow-lg shadow-pink-300/50 transition active:scale-[0.98]">
+          📋 Sao chép câu trả lời để gửi lại
+        </button>
+        <button type="button" onclick="location.reload()" class="w-full py-2 rounded-xl text-xs font-bold text-pink-500 hover:bg-pink-50 transition">
+          Làm lại từ đầu
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast thông báo -->
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden px-4 py-2.5 rounded-full bg-slate-800 text-white text-xs font-bold shadow-lg whitespace-nowrap"></div>
+
+  <script>
+    let generatedSummaryText = '';
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.remove('hidden');
+      setTimeout(() => t.classList.add('hidden'), 3000);
+    }
+
+    function goToStep(step) {
+      document.getElementById('step-0').classList.add('hidden');
+      document.getElementById('resultScreen').classList.add('hidden');
+      document.getElementById('quizContainer').classList.remove('hidden');
+
+      document.querySelectorAll('.step-pane').forEach(el => el.classList.add('hidden'));
+      const target = document.getElementById(`step-${step}`);
+      if (target) target.classList.remove('hidden');
+
+      const percent = step * 25;
+      document.getElementById('stepLabel').textContent = `Câu ${step} / 4`;
+      document.getElementById('stepPercent').textContent = `${percent}%`;
+      document.getElementById('progressBar').style.width = `${percent}%`;
+    }
+
+    function validateAndNext(currentStep) {
+      if (currentStep === 1) {
+        const name = document.getElementById('inputFullName').value.trim();
+        const dob = document.getElementById('inputDob').value;
+        if (!name) {
+          showToast('Cậu nhập tên đầy đủ trước nha 🌸');
+          return;
+        }
+        if (!dob) {
+          showToast('Chọn ngày sinh nhật của cậu nữa nhé 🎂');
+          return;
+        }
+      }
+      goToStep(currentStep + 1);
+    }
+
+    function toggleTag(btn) {
+      btn.classList.toggle('active');
+    }
+
+    function selectSingleTag(btn, containerId) {
+      document.querySelectorAll(`#${containerId} .tag-btn`).forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function getZodiac(day, month) {
+      if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return '♒ Bảo Bình';
+      if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return '♓ Song Ngư';
+      if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return '♈ Bạch Dương';
+      if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return '♉ Kim Ngưu';
+      if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return '♊ Song Tử';
+      if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return '♋ Cự Giải';
+      if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return '♌ Sư Tử';
+      if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return '♍ Xử Nữ';
+      if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return '♎ Thiên Bình';
+      if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return '♏ Bọ Cạp';
+      if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return '♐ Nhân Mã';
+      return '♑ Ma Kết';
+    }
+
+    function updateZodiacPreview() {
+      const dobVal = document.getElementById('inputDob').value;
+      const badge = document.getElementById('zodiacBadge');
+      if (!dobVal) {
+        badge.classList.add('hidden');
+        return;
+      }
+      const parts = dobVal.split('-');
+      const month = parseInt(parts[1], 10);
+      const day = parseInt(parts[2], 10);
+      badge.textContent = `Cung hoàng đạo: ${getZodiac(day, month)}`;
+      badge.classList.remove('hidden');
+    }
+
+    function finishSurvey() {
+      const fullName = document.getElementById('inputFullName').value.trim() || 'Khối Phương';
+      const nickname = document.getElementById('inputNickname').value.trim();
+      const dobVal = document.getElementById('inputDob').value;
+
+      let dobFormatted = 'Chưa chọn';
+      let zodiac = '✨ Đáng yêu';
+      if (dobVal) {
+        const [y, m, d] = dobVal.split('-');
+        dobFormatted = `${d}/${m}/${y}`;
+        zodiac = getZodiac(parseInt(d, 10), parseInt(m, 10));
+      }
+
+      const selectedHobbies = Array.from(document.querySelectorAll('#hobbyTags .tag-btn.active')).map(b => b.textContent.trim());
+      const hobbiesText = selectedHobbies.length ? selectedHobbies.join(', ') : 'Chưa chọn sở thích';
+
+      const food = document.getElementById('inputFood').value.trim() || 'Chưa bật mí';
+      const activeVibe = document.querySelector('#vibeTags .tag-btn.active');
+      const vibeText = activeVibe ? activeVibe.textContent.trim() : 'Bí ẩn 🌸';
+      const musicColor = document.getElementById('inputMusicColor').value.trim() || 'Chưa bật mí';
+      const wish = document.getElementById('inputWish').value.trim();
+      const note = document.getElementById('inputNote').value.trim();
+
+      document.getElementById('resName').textContent = fullName;
+      document.getElementById('resNickname').textContent = nickname ? `Biệt danh: ${nickname}` : 'Hồ sơ độc quyền ✨';
+      document.getElementById('resZodiac').textContent = zodiac;
+      document.getElementById('resDob').textContent = dobFormatted;
+      document.getElementById('resVibe').textContent = vibeText;
+      document.getElementById('resHobbies').textContent = hobbiesText;
+      document.getElementById('resFoodMusic').textContent = `🍽️ ${food} • 🎨 ${musicColor}`;
+
+      const wishNoteCombined = [wish ? `Điều ước: ${wish}` : '', note ? `Lời nhắn: "${note}"` : ''].filter(Boolean).join(' | ') || 'Cảm ơn vì chiếc thiệp hồng xinh xắn này 💖';
+      document.getElementById('resWishNote').textContent = wishNoteCombined;
+
+      generatedSummaryText =
+`💌 HỒ SƠ CỦA KHỐI PHƯƠNG 💌
+• Họ tên: ${fullName}${nickname ? ` (${nickname})` : ''}
+• Ngày sinh: ${dobFormatted} (${zodiac})
+• Tính cách: ${vibeText}
+• Sở thích: ${hobbiesText}
+• Món chân ái: ${food}
+• Màu/Nhạc yêu thích: ${musicColor}
+• Điều ước: ${wish || 'Chưa ghi'}
+• Lời nhắn: ${note || 'Chưa ghi'}`;
+
+      document.getElementById('quizContainer').classList.add('hidden');
+      document.getElementById('resultScreen').classList.remove('hidden');
+      copyResultText(true);
+    }
+
+    function copyResultText(isAuto = false) {
+      if (!generatedSummaryText) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(generatedSummaryText).then(() => {
+          showToast(isAuto ? 'Đã tự động sao chép! Cậu dán gửi lại cho tớ nhé 💖' : 'Đã sao chép câu trả lời vào bộ nhớ tạm 💖');
+        }).catch(() => fallbackCopy(generatedSummaryText));
+      } else {
+        fallbackCopy(generatedSummaryText);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('Đã sao chép câu trả lời! Cậu dán vào tin nhắn gửi lại nhé 💖');
+      } catch (e) {
+        showToast('Cậu chụp màn hình thẻ này gửi lại cho tớ nha 📸');
+      }
+      document.body.removeChild(ta);
+    }
+  </script>
+</body>
+</html>
